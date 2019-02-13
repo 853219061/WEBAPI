@@ -1,0 +1,48 @@
+@using System.Web.Http
+@using KM_WEBAPI.Areas.HelpPage.Models
+@model HelpPageApiModel
+
+@{
+    var description = Model.ApiDescription;
+    ViewBag.Title = description.HttpMethod.Method + " " + description.RelativePath;
+}
+
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        $('.ui-dialog-titlebar-close').click(function () {
+
+            $(this).parent().parent().hide()
+            $('.ui-widget-overlay').remove()
+        })
+
+
+    })
+
+
+
+</script>
+
+
+<link type="text/css" href="~/Areas/HelpPage/HelpPage.css" rel="stylesheet" />
+<div id="body" class="help-page">
+    <section class="featured">
+        <div class="content-wrapper">
+            <p>
+                @Html.ActionLink("Help Page Home", "Index")
+            </p>
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        @Html.DisplayForModel()
+    </section>
+</div>
+
+    @Html.DisplayForModel("TestClientDialogs")
+    @section scripts{
+
+        <link href="~/Areas/HelpPage/HelpPage.css" rel="stylesheet" />
+        @Html.DisplayForModel("TestClientReferences")
+        
+    }
